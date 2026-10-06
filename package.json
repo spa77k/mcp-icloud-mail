@@ -1,0 +1,44 @@
+{
+  "name": "mcp-icloud-mail",
+  "version": "0.1.0",
+  "description": "Read-only MCP server for iCloud Mail over IMAP (app-specific password)",
+  "license": "MIT",
+  "author": "spa77k",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spa77k/mcp-icloud-mail.git"
+  },
+  "keywords": [
+    "mcp",
+    "icloud",
+    "mail",
+    "imap",
+    "claude"
+  ],
+  "type": "module",
+  "bin": {
+    "mcp-icloud-mail": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "imapflow": "^2.2.6",
+    "mailparser": "^3.9.36",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/mailparser": "^3.9.0",
+    "@types/node": "^26.6.4",
+    "typescript": "^7.0.2"
+  }
+}
