@@ -1,3 +1,5 @@
+[日本語](README.md) | [English](README.en.md) | [简体中文](README.zh-CN.md) | [한국어](README.ko.md)
+
 # mcp-icloud-mail
 
 iCloud メールを Claude などの AI から**読むだけ**の MCP サーバーです。IMAP とアプリ用パスワードで接続します。
@@ -37,7 +39,7 @@ npm run build
 
 ## 設定
 
-以下の `/path/to/mcp-icloud-mail` は、clone したディレクトリの絶対パス（`pwd` で確認できます）に置き換えてください。環境変数はプレースホルダのままにせず、自分の値に置き換えます。
+以下の `/path/to/mcp-icloud-mail` は clone したディレクトリの絶対パス（`pwd` で確認できます）に置き換えてください。環境変数はプレースホルダのままにせず、自分の値に置き換えます。
 
 ### Claude Code
 
@@ -75,7 +77,7 @@ claude mcp add icloud-mail -e ICLOUD_EMAIL=you@icloud.com -e ICLOUD_APP_PASSWORD
 
 ## 注意
 
-- App 用パスワードは、iCloud メール・連絡先・カレンダーなどにアクセスできます。設定ファイルを人に見せたり、リポジトリに入れたりしないでください。漏れたら account.apple.com でそのパスワードを取り消してください。
+- App 用パスワードは iCloud メール・連絡先・カレンダーなどにアクセスできます。設定ファイルを人に見せたり、リポジトリに入れたりしないでください。漏れたら account.apple.com でそのパスワードを取り消してください。
 - メール本文はそのまま AI に渡ります。知らない人からのメールに「〇〇を実行して」などの指示が書かれていても、AI がそれに従わないよう、ほかのツール（送信やファイル操作など）と組み合わせるときは操作の確認をオンにしておいてください。
 - Apple アカウントのパスワードを変えると、App 用パスワードはすべて無効になります。作り直して設定し直してください。
 
