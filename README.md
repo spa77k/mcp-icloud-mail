@@ -22,12 +22,27 @@ A read-only MCP server for iCloud Mail over IMAP, using an app-specific password
 2. [account.apple.com](https://account.apple.com) にサインインし、「サインインとセキュリティ」→「App 用パスワード」でパスワードを作る（`xxxx-xxxx-xxxx-xxxx` の形）。
 3. Node.js 20 以上を入れる。
 
+## インストール
+
+このパッケージは npm に未公開のため、GitHub から clone してビルドします。
+
+```bash
+git clone https://github.com/spa77k/mcp-icloud-mail.git
+cd mcp-icloud-mail
+npm ci
+npm run build
+```
+
+ビルドすると `dist/index.js` ができます。設定ではこのファイルを絶対パスで指定します。
+
 ## 設定
+
+以下の `/path/to/mcp-icloud-mail` は、clone したディレクトリの絶対パス（`pwd` で確認できます）に置き換えてください。環境変数はプレースホルダのままにせず、自分の値に置き換えます。
 
 ### Claude Code
 
 ```bash
-claude mcp add icloud-mail -e ICLOUD_EMAIL=you@icloud.com -e ICLOUD_APP_PASSWORD=xxxx-xxxx-xxxx-xxxx -- npx -y mcp-icloud-mail
+claude mcp add icloud-mail -e ICLOUD_EMAIL=you@icloud.com -e ICLOUD_APP_PASSWORD=xxxx-xxxx-xxxx-xxxx -- node /path/to/mcp-icloud-mail/dist/index.js
 ```
 
 ### Claude Desktop など（JSON で設定するクライアント）
@@ -36,8 +51,8 @@ claude mcp add icloud-mail -e ICLOUD_EMAIL=you@icloud.com -e ICLOUD_APP_PASSWORD
 {
   "mcpServers": {
     "icloud-mail": {
-      "command": "npx",
-      "args": ["-y", "mcp-icloud-mail"],
+      "command": "node",
+      "args": ["/path/to/mcp-icloud-mail/dist/index.js"],
       "env": {
         "ICLOUD_EMAIL": "you@icloud.com",
         "ICLOUD_APP_PASSWORD": "xxxx-xxxx-xxxx-xxxx"
@@ -67,7 +82,7 @@ claude mcp add icloud-mail -e ICLOUD_EMAIL=you@icloud.com -e ICLOUD_APP_PASSWORD
 ## 開発
 
 ```bash
-npm install
+npm ci
 npm run build
 ICLOUD_EMAIL=you@icloud.com ICLOUD_APP_PASSWORD=xxxx-xxxx-xxxx-xxxx npx @modelcontextprotocol/inspector node dist/index.js
 ```
